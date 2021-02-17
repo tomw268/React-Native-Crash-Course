@@ -10,23 +10,10 @@ import {
 } from 'react-native';
 
 export default function App() {
-  const handlePress = () => console.log('Text pressed');
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text onPress={handlePress}>First React Native APP!!!!</Text>
-      <TouchableHighlight onPress={() => console.log('IMG Tapped')}>
-        <Image
-          source={{
-            width: 200,
-            height: 300,
-            uri: 'https://picsum.photos/200/300',
-          }}
-        />
-      </TouchableHighlight>
-
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>First React Native APP!!!!</Text>
+    </View>
   );
 }
 
