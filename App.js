@@ -21,7 +21,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Movie DB </Text>
-      <TextInput style={styles.searchbox} />
+      <TextInput
+        style={styles.searchbox}
+        value={state.s}
+        onChangeText={(text) =>
+          setState((prevState) => {
+            return { ...prevState, s: text };
+          })
+        }
+      />
     </View>
   );
 }
@@ -47,5 +55,8 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     padding: 20,
     width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    marginBottom: 40,
   },
 });
