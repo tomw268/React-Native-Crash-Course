@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import {
   StyleSheet,
@@ -8,13 +8,20 @@ import {
   View,
   Image,
   SafeAreaView,
+  TextInput,
 } from 'react-native';
 
 export default function App() {
   const apiUrl = 'http://www.omdbapi.com/?i=tt3896198&apikey=30d0b1af';
+  const [state, setState] = useState({
+    s: 'Enter a movie ....',
+    results: [],
+    selected: {},
+  });
   return (
     <View style={styles.container}>
-      <Text></Text>
+      <Text style={styles.title}>Movie DB </Text>
+      <TextInput style={styles.searchbox} />
     </View>
   );
 }
@@ -22,8 +29,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
+    backgroundColor: '#223343',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingTop: 70,
+    paddingHorizontal: 20,
+  },
+  title: {
+    color: '#fff',
+    fontSize: 32,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  searchbox: {
+    fontSize: 20,
+    fontWeight: '300',
+    padding: 20,
+    width: '100%',
   },
 });
