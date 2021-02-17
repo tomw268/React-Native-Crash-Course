@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import axios from 'axios';
 import {
   StyleSheet,
   Text,
@@ -10,9 +11,10 @@ import {
 } from 'react-native';
 
 export default function App() {
+  const apiUrl = 'http://www.omdbapi.com/?i=tt3896198&apikey=30d0b1af';
   return (
     <View style={styles.container}>
-      <Text>First React Native APP!!!!</Text>
+      <Text></Text>
     </View>
   );
 }
