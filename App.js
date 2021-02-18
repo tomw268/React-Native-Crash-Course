@@ -19,10 +19,11 @@ export default function App() {
     results: [],
     selected: {},
   });
+
   const search = () => {
     axios(apiUrl + '&s=' + state.s).then(({ data }) => {
       let results = data.Search;
-
+      console.log(results);
       setState((prevState) => {
         return { ...prevState, results: results };
       });
@@ -40,8 +41,28 @@ export default function App() {
           })
         }
         onSubmitEditing={search}
+        value={state.s}
       />
-      <ScrollView style={styles.results}></ScrollView>
+      <ScrollView style={styles.results}>
+        {state.results.map((result) => (
+          <TouchableHighlight
+            key={result.imdbID}
+            onPress={() => openPopup(result.imdbID)}
+          >
+            <View style={styles.result}>
+              <Image
+                source={{ uri: result.Poster }}
+                style={{
+                  width: '100%',
+                  height: 300,
+                }}
+                resizeMode="cover"
+              />
+              <Text style={styles.heading}>{result.Title}</Text>
+            </View>
+          </TouchableHighlight>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -74,8 +95,8 @@ const styles = StyleSheet.create({
   results: {
     flex: 1,
   },
-  results: {
-    flex: 2,
+  result: {
+    flex: 1,
     width: '100%',
     marginBottom: 20,
   },
