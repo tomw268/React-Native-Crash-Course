@@ -9,6 +9,7 @@ import {
   Image,
   SafeAreaView,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
   const search = () => {
     axios(apiUrl + '&s=' + state.s).then(({ data }) => {
       let results = data.Search;
-      console.log(results);
+
       setState((prevState) => {
         return { ...prevState, results: results };
       });
@@ -40,6 +41,7 @@ export default function App() {
         }
         onSubmitEditing={search}
       />
+      <ScrollView style={styles.results}></ScrollView>
     </View>
   );
 }
@@ -68,5 +70,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 8,
     marginBottom: 40,
+  },
+  results: {
+    flex: 1,
+  },
+  results: {
+    flex: 2,
+    width: '100%',
+    marginBottom: 20,
+  },
+  heading: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: '700',
+    padding: 20,
+    backgroundColor: '#445565',
   },
 });
