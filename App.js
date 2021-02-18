@@ -38,6 +38,7 @@ export default function App() {
             return { ...prevState, s: text };
           })
         }
+        onSubmitEditing={search}
       />
     </View>
   );
