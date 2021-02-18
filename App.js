@@ -18,6 +18,15 @@ export default function App() {
     results: [],
     selected: {},
   });
+  const search = () => {
+    axios(apiUrl + '&s=' + state.s).then(({ data }) => {
+      let results = data.Search;
+      console.log(results);
+      setState((prevState) => {
+        return { ...prevState, results: results };
+      });
+    });
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Movie DB </Text>
