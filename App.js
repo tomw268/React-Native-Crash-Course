@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   TextInput,
   ScrollView,
+  Modal,
 } from 'react-native';
 
 export default function App() {
@@ -26,6 +27,17 @@ export default function App() {
       console.log(results);
       setState((prevState) => {
         return { ...prevState, results: results };
+      });
+    });
+  };
+
+  const openPopup = (id) => {
+    axios(apiUrl + '&i=' + id).then(({ data }) => {
+      let result = data;
+      console.log(data);
+
+      setState((prevState) => {
+        return { ...prevState, selected: result };
       });
     });
   };
@@ -63,6 +75,15 @@ export default function App() {
           </TouchableHighlight>
         ))}
       </ScrollView>
+      <Modal
+        animationType="fade"
+        transparent={false}
+        visible={typeof state.selected.Title != 'undefined' ? true : false}
+      >
+        <View>
+          <Text>Hello world</Text>
+        </View>
+      </Modal>
     </View>
   );
 }
